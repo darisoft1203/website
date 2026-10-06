@@ -1,11 +1,188 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <title>DariSoft</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Darisoft — personal dashboard and projects">
+  <meta name="theme-color" content="#0b1020">
+  <title>Darisoft — Personal Dashboard</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Witaj na darisoft.co.uk!</h1>
-    <p>Moja strona jest już online 🎉</p>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Darisoft Home">
+      <span class="brand-mark">D</span>
+      <span>darisoft</span>
+    </a>
+
+    <nav id="nav">
+      <a href="#home">Home</a>
+      <a href="#about">O mnie</a>
+      <a href="#projects">Projekty</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#notes">Notatki</a>
+    </nav>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Otwórz menu">☰</button>
+  </header>
+
+  <main>
+    <section class="hero section" id="home">
+      <div class="hero-content">
+        <p class="eyebrow">PERSONAL DIGITAL SPACE</p>
+        <h1>Witaj w <span>Darisoft</span>.</h1>
+        <p class="lead">
+          Moje projekty, technologie, informacje i przydatne narzędzia
+          w jednym miejscu.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#dashboard">Otwórz dashboard</a>
+          <a class="btn secondary" href="#projects">Moje projekty</a>
+        </div>
+      </div>
+
+      <div class="hero-card glass">
+        <div class="status-dot"></div>
+        <div>
+          <strong>System online</strong>
+          <span>Darisoft personal dashboard</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-heading">
+        <p class="eyebrow">ABOUT</p>
+        <h2>O mnie</h2>
+      </div>
+
+      <div class="about-grid">
+        <article class="card">
+          <div class="icon">⚙️</div>
+          <h3>Technologie</h3>
+          <p>Home Assistant, Raspberry Pi, ESP32, IoT, MQTT, Matter, Thread i automatyzacja.</p>
+        </article>
+        <article class="card">
+          <div class="icon">💡</div>
+          <h3>Projekty</h3>
+          <p>Eksperymenty z elektroniką, smart home, siecią domową oraz własnymi rozwiązaniami.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🛠️</div>
+          <h3>Darisoft</h3>
+          <p>Osobiste miejsce do organizowania projektów, informacji i codziennych narzędzi.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="section-heading">
+        <p class="eyebrow">PROJECTS</p>
+        <h2>Projekty</h2>
+      </div>
+
+      <div class="project-grid">
+        <article class="project card">
+          <span class="project-number">01</span>
+          <h3>Home Assistant</h3>
+          <p>Automatyka domu, MQTT, urządzenia IoT i integracje.</p>
+          <span class="tag">SMART HOME</span>
+        </article>
+
+        <article class="project card">
+          <span class="project-number">02</span>
+          <h3>ESP32 / Matter</h3>
+          <p>Eksperymenty z ESP32-C6, Matter i Thread.</p>
+          <span class="tag">IOT</span>
+        </article>
+
+        <article class="project card">
+          <span class="project-number">03</span>
+          <h3>Raspberry Pi</h3>
+          <p>Serwery domowe, usługi sieciowe i automatyzacja.</p>
+          <span class="tag">LINUX</span>
+        </article>
+
+        <article class="project card">
+          <span class="project-number">04</span>
+          <h3>Web / GitHub</h3>
+          <p>Własne strony, dashboardy i małe narzędzia webowe.</p>
+          <span class="tag">WEB</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="dashboard">
+      <div class="section-heading">
+        <p class="eyebrow">LIVE DASHBOARD</p>
+        <h2>Dashboard</h2>
+      </div>
+
+      <div class="dashboard-grid">
+        <article class="widget clock-widget card">
+          <span class="widget-label">CZAS</span>
+          <div id="clock">--:--:--</div>
+          <div id="date">Ładowanie daty...</div>
+        </article>
+
+        <article class="widget weather-widget card">
+          <div class="widget-top">
+            <span class="widget-label">POGODA</span>
+            <button class="small-btn" id="weatherRefresh" title="Odśwież pogodę">↻</button>
+          </div>
+          <div class="weather-main">
+            <span id="weatherIcon">🌤️</span>
+            <strong id="temperature">--°C</strong>
+          </div>
+          <div id="weatherDescription">Pobieranie pogody...</div>
+          <div class="weather-meta">
+            <span id="location">Lokalizacja: --</span>
+            <span id="humidity">Wilgotność: --</span>
+          </div>
+        </article>
+
+        <article class="widget browser-widget card">
+          <span class="widget-label">URZĄDZENIE</span>
+          <div class="info-row"><span>Platforma</span><strong id="platform">--</strong></div>
+          <div class="info-row"><span>Język</span><strong id="language">--</strong></div>
+          <div class="info-row"><span>Ekran</span><strong id="screenSize">--</strong></div>
+          <div class="info-row"><span>Online</span><strong id="onlineStatus">--</strong></div>
+        </article>
+
+        <article class="widget quick-widget card">
+          <span class="widget-label">SZYBKIE LINKI</span>
+          <div class="quick-links">
+            <a href="https://github.com/" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="https://www.home-assistant.io/" target="_blank" rel="noopener">Home Assistant ↗</a>
+            <a href="https://www.openstreetmap.org/" target="_blank" rel="noopener">Mapa ↗</a>
+            <a href="https://www.google.com/" target="_blank" rel="noopener">Google ↗</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="notes">
+      <div class="section-heading">
+        <p class="eyebrow">LOCAL NOTES</p>
+        <h2>Notatki</h2>
+      </div>
+
+      <div class="notes-card card">
+        <p class="muted">Notatki są przechowywane tylko w tej przeglądarce (localStorage).</p>
+        <textarea id="notesArea" placeholder="Wpisz tutaj swoje notatki..."></textarea>
+        <div class="notes-footer">
+          <span id="saveStatus">Gotowe</span>
+          <button class="btn primary small" id="clearNotes">Wyczyść</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> Darisoft</span>
+    <span>Built with HTML · CSS · JavaScript</span>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
